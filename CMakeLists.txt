@@ -21,6 +21,7 @@ else (EMSCRIPTEN)
 	# Target architecture detection (thank you CMake for not providing that...)
 	if (NOT ARCH)
 		set(SYSTEM_PROCESSOR ${CMAKE_SYSTEM_PROCESSOR})
+  		set(ARCH ${CMAKE_SYSTEM_PROCESSOR}) # azaday 5/19/25: fix to handle case where CMAKE_SYSTEM_PROCESSOR=aarch64
 		if (SYSTEM_PROCESSOR STREQUAL "AMD64" OR SYSTEM_PROCESSOR STREQUAL "x86_64")
 			if (CMAKE_SIZEOF_VOID_P EQUAL 8)
 				set(ARCH "x86_64")
