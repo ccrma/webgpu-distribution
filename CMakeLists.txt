@@ -40,7 +40,7 @@ else (EMSCRIPTEN)
 	# This is used to advertise the flavor of WebGPU that this zip provides
 	target_compile_definitions(webgpu INTERFACE WEBGPU_BACKEND_WGPU)
 
-	if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+	if(CMAKE_SYSTEM_NAME STREQUAL "Windows" OR CMAKE_SYSTEM_NAME STREQUAL "CYGWIN")
 
 		set(WGPU_RUNTIME_LIB ${WGPU}/lib/windows-${ARCH}/wgpu_native.lib)
 		target_link_libraries(webgpu INTERFACE d3dcompiler.lib Ws2_32.lib Userenv.lib ntdll.lib Bcrypt.lib Opengl32.lib)
